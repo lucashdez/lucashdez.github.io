@@ -1,37 +1,46 @@
 use yew::prelude::*;
 
-#[function_component(Consumer)]
-fn consumer() -> Html
+#[function_component(AboutMe)]
+fn about_me() -> Html
 {
+	let presentation_card: &str = "Hi. I am Lucas Hernández Abreu.";
     html!(
-        <div class="consumer">
-            {"CONSUMER"}
-        </div>
+		<div class="box">
+			<div class="aboutme text">
+			<h1>{"About Me"}</h1>
+			<p> {presentation_card}</p>
+			</div>
+			</div>
     )
 }
 
-#[function_component(Vendor)]
-fn vendor() -> Html
-{
+#[function_component(Logo)]
+fn logo() -> Html {
+	let logo_lucas ="
+██╗     ██╗   ██╗ ██████╗ █████╗ ███████╗██╗  ██╗██████╗ ███████╗███████╗
+██║     ██║   ██║██╔════╝██╔══██╗██╔════╝██║  ██║██╔══██╗██╔════╝╚══███╔╝
+██║     ██║   ██║██║     ███████║███████╗███████║██║  ██║█████╗    ███╔╝ 
+██║     ██║   ██║██║     ██╔══██║╚════██║██╔══██║██║  ██║██╔══╝   ███╔╝  
+███████╗╚██████╔╝╚██████╗██║  ██║███████║██║  ██║██████╔╝███████╗███████╗
+╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝
+"; 
     html!(
-        <div class="vendor">
-            {"VENDOR"}
-        </div>
+        <div class="logo">
+			<pre>{logo_lucas}</pre>
+		</div>
     )
 }
 #[function_component(App)]
-fn app() -> Html
-{
+fn app() -> Html {
     html!(
         <div class="app">
-            <Consumer/>
-            <Vendor/>
+            <Logo/>
+			<AboutMe/>
         </div>
     )
 }
 
-fn main()
-{
+fn main() {
     yew::start_app::<App>();
 }
 
