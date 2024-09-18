@@ -1,7 +1,2 @@
-# Cargo things
-debug/
-target/
-Cargo.lock
-
-# Windows debug
-.pdb
+.zig-cache/
+.zig-out/
