@@ -14,7 +14,8 @@ fn handle_request(connection: net.Server.Connection) !void {
     const method_end = std.mem.indexOf(u8, request, " ") orelse return;
     const method = request[0..method_end];
     if (std.mem.eql(u8, method, "GET")) {
-        std.debug.print("GOT A GET", .{});
+        std.debug.print("GOT A GET\n", .{});
+        std.debug.print("Got bytes: {s}\n", .{request});
     }
 }
 
