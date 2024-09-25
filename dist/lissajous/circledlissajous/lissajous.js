@@ -230,38 +230,54 @@ export class Lissajous {
    * @desc Updates the draw
    */
   draw = () => {
+    // TODO: Create halo like ring
     this.#context.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
     this.#drawGrid();
     this.#context.strokeStyle = "Black";
     this.#context.lineWidth = "2";
     this.#context.translate(this.#canvas.width / 2, this.#canvas.height / 2);
     this.#context.beginPath();
-
-    if (this.#pointLocation >= 2 * Math.PI) {
-      this.#pointLocation = 0;
-    }
-    let xDotPosition = 0;
-    let yDotPosition = 0;
-
     for (let i = 0; i < 2 * Math.PI; i += Math.PI / 180) {
       const xCoordinate = 200 * Math.sin(this.#alpha * i + this.#radians);
       const yCoordinate = 200 * Math.sin(this.#beta * i);
       this.#context.lineTo(xCoordinate, yCoordinate);
     }
+    this.#context.stroke();
+    this.#context.closePath();
+
+    this.#context.beginPath();
+    for (let i = 0; i < 2 * Math.PI; i += Math.PI / 180) {
+      const xCoordinate = 205 * Math.sin(this.#alpha * i + this.#radians);
+      const yCoordinate = 210 * Math.sin(this.#beta * i);
+      this.#context.lineTo(xCoordinate, yCoordinate);
+    }
 
     this.#context.stroke();
     this.#context.closePath();
+    let xDotPosition = 0;
+    let yDotPosition = 0;
+    /** Gets the position for the dot, only if the boolean is true */
+    if (this.#animatePoint) {
+      this.#context.beginPath();
+      xDotPosition += 200 *
+        Math.sin(this.#alpha * this.#pointLocation + this.#radians);
+      yDotPosition += 200 * Math.sin(this.#beta * this.#pointLocation);
+
+      this.#context.arc(
+        xDotPosition,
+        yDotPosition,
+        5,
+        0,
+        2 * Math.PI,
+        true,
+      );
+
+      this.#context.closePath();
+    }
+
     this.#context.translate(-this.#canvas.width / 2, -this.#canvas.height / 2);
     if (this.#animateGap) {
       this.#radians += Math.PI / 180;
-    }
-
-    /** Gets the position for the dot, only if the boolean is true */
-    if (this.#animatePoint) {
-      xDotPosition = 200 *
-        Math.sin(this.#alpha * this.#pointLocation + this.#radians);
-      yDotPosition = 200 * Math.sin(this.#beta * this.#pointLocation);
-      this.#context.arc(xDotPosition, yDotPosition, 5, 0, 2 * Math.PI, true);
     }
 
     const RADIANS_INPUT = document.getElementById("radiansInput");
@@ -320,7 +336,7 @@ export class Lissajous {
  * and executes them.
  */
 function main() {
-  let lissajous = new Lissajous();
+  const lissajous = new Lissajous();
   lissajous.draw();
 }
 
