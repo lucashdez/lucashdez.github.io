@@ -1,0 +1,23 @@
+.name-box {
+  background-color: rgba(00, 00, 00, 0.5);
+  color: none;
+}
+
+.name-text {
+  style: none;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #00ff00;
+  width: 100%;
+  animation: writing-text 5s steps(100, end);
+}
+
+@keyframes writing-text {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
