@@ -20,24 +20,17 @@
             <a href="#contacto">Contacto</a>
         </nav>
     </header>
+    <div class="a">Here header of zcoder</div>
 
     <!-- Nombre -->
     <section id="nombre">
-        <h1>Nombre del Proyecto</h1>
-    </section>
-
-    <!-- Descripción -->
-    <section id="descripcion">
-        <h2>Descripción</h2>
-        <p>
-            Esta es una breve descripción de tu producto o servicio. Explica tu
-            propósito y valor añadido.
-        </p>
+        <h1>ZCoder</h1>
+        <p>The future is here. After looking at the Dyon System's project I started implementing that idea of a smart editor without lsp or AI. A hard engineering problem that the only thing it needs is time.  </p>
     </section>
 
     <!-- Características -->
     <section id="features" class="features">
-        <h2>Características</h2>
+        <h2>Features</h2>
         <ul>
             <li>Fácil de usar</li>
             <li>Responsive</li>
@@ -59,49 +52,10 @@
     </section>
 
     <!-- Footer -->
-    <footer>&copy; 2025 Mi Empresa. Todos los derechos reservados.</footer>
+    <footer>&copy; 2025 Lucas Hernandez Abreu. All rights reserved.</footer>
 
     <!-- JS -->
-    <script>
-        // Menú responsive
-        const toggle = document.getElementById("menu-toggle");
-        const navbar = document.getElementById("navbar");
-
-        toggle.addEventListener("click", () => {
-            navbar.classList.toggle("open");
-        });
-
-        // Scroll: sección activa
-        const navLinks = document.querySelectorAll("nav a");
-        const sections = document.querySelectorAll("section");
-
-        window.addEventListener("scroll", () => {
-            let current = "";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 60) {
-                    current = section.getAttribute("id");
-                }
-            });
-
-            navLinks.forEach((a) => {
-                a.classList.remove("active");
-                if (a.getAttribute("href") === "#" + current) {
-                    a.classList.add("active");
-                }
-            });
-        });
-
-        // Contact form: simple mensaje sin backend
-        const form = document.getElementById("contact-form");
-        const msg = document.getElementById("form-msg");
-
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            msg.textContent = "Mensaje enviado. ¡Gracias por contactarnos!";
-            form.reset();
-        });
-    </script>
+    <script src="scripts.js" />
 </body>
 
 </html>

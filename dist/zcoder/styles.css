@@ -1,19 +1,29 @@
 :root {
-    --color-principal: #333;
+    --bg-lighter: #333;
     --color-secundario: #f1f1f1;
-    --color-acento: #0077cc;
+    --accent-color: #0077cc;
+    --bg: #1c1c1c;
+    --fg: #91b081;
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    color: var(--fg);
     scroll-behavior: smooth;
+    background-color: var(--bg-lighter);
+}
+
+p {
+
+    border: 2px #fff solid;
+
 }
 
 header {
     position: sticky;
     top: 0;
-    background-color: var(--color-principal);
+    background-color: var(--bg);
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -40,7 +50,7 @@ nav a {
 }
 
 nav a.active {
-    border-bottom: 2px solid var(--color-acento);
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .menu-toggle {
@@ -78,7 +88,7 @@ textarea {
 }
 
 input[type="submit"] {
-    background-color: var(--color-acento);
+    background-color: var(--accent-color);
     color: white;
     border: none;
     cursor: pointer;
