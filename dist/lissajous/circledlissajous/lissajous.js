@@ -146,15 +146,10 @@ export class Lissajous {
     let betaInput = document.getElementById("betaInput");
     let betaValue = document.getElementById("betaValue");
 
-    let radiansInput = document.getElementById("radiansInput");
-    let radiansValue = document.getElementById("radiansValue");
-
     /** Event listener to the alpha value */
     alphaInput.addEventListener(
       "input",
       () => {
-        this.#alpha = alphaInput.value;
-        alphaValue.value = this.#alpha;
       },
       false,
     );
@@ -163,21 +158,11 @@ export class Lissajous {
     betaInput.addEventListener(
       "input",
       () => {
-        this.#beta = betaInput.value;
-        betaValue.value = this.#beta;
       },
       false,
     );
 
     /** Event listeners to the radians value */
-    radiansInput.addEventListener(
-      "input",
-      () => {
-        this.#radians = radiansInput.value;
-        radiansValue.value = this.#radians;
-      },
-      false,
-    );
   }
 
   /**
@@ -191,15 +176,10 @@ export class Lissajous {
     let betaInput = document.getElementById("betaInput");
     let betaValue = document.getElementById("betaValue");
 
-    let radiansInput = document.getElementById("radiansInput");
-    let radiansValue = document.getElementById("radiansValue");
-
     /** Changes to alpha value */
     alphaValue.addEventListener(
       "input",
       () => {
-        this.#alpha = alphaValue.value;
-        alphaInput.value = this.#alpha;
       },
       false,
     );
@@ -208,18 +188,6 @@ export class Lissajous {
     betaValue.addEventListener(
       "input",
       () => {
-        this.#beta = betaValue.value;
-        betaInput.value = this.#beta;
-      },
-      false,
-    );
-
-    /**Changes to radians value*/
-    radiansValue.addEventListener(
-      "input",
-      () => {
-        this.#radians = radiansValue.value;
-        radiansInput.value = this.#radians;
       },
       false,
     );
@@ -238,8 +206,8 @@ export class Lissajous {
     this.#context.translate(this.#canvas.width / 2, this.#canvas.height / 2);
     this.#context.beginPath();
     for (let i = 0; i < 2 * Math.PI; i += Math.PI / 180) {
-      const xCoordinate = 200 * Math.sin(this.#alpha * i + this.#radians);
-      const yCoordinate = 200 * Math.sin(this.#beta * i);
+      const xCoordinate = 200 * Math.sin(i + this.#radians);
+      const yCoordinate = 200 * Math.sin(i);
       this.#context.lineTo(xCoordinate, yCoordinate);
     }
     this.#context.stroke();
@@ -247,8 +215,8 @@ export class Lissajous {
 
     this.#context.beginPath();
     for (let i = 0; i < 2 * Math.PI; i += Math.PI / 180) {
-      const xCoordinate = 205 * Math.sin(this.#alpha * i + this.#radians);
-      const yCoordinate = 210 * Math.sin(this.#beta * i);
+      const xCoordinate = 205 * Math.sin(i + this.#radians);
+      const yCoordinate = 210 * Math.sin(i);
       this.#context.lineTo(xCoordinate, yCoordinate);
     }
 
@@ -260,8 +228,8 @@ export class Lissajous {
     if (this.#animatePoint) {
       this.#context.beginPath();
       xDotPosition += 200 *
-        Math.sin(this.#alpha * this.#pointLocation + this.#radians);
-      yDotPosition += 200 * Math.sin(this.#beta * this.#pointLocation);
+        Math.sin(this.#pointLocation + this.#radians);
+      yDotPosition += 200 * Math.sin(this.#pointLocation);
 
       this.#context.arc(
         xDotPosition,
@@ -277,7 +245,7 @@ export class Lissajous {
 
     this.#context.translate(-this.#canvas.width / 2, -this.#canvas.height / 2);
     if (this.#animateGap) {
-      this.#radians += Math.PI / 180;
+      this.#radians += Math.PI / 360;
     }
 
     const RADIANS_INPUT = document.getElementById("radiansInput");
@@ -286,7 +254,7 @@ export class Lissajous {
     RADIANS_INPUT.value = ((this.#radians / Math.PI) % 2).toFixed(2);
     RADIANS_VALUE.value = ((this.#radians / Math.PI) % 2).toFixed(2);
 
-    this.#pointLocation += Math.PI / 180;
+    this.#pointLocation += Math.PI / 360;
 
     requestAnimationFrame(this.draw);
   };

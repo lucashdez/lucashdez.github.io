@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZCoder</title>
+</head>
+
+<body>
+    <!-- Header: Logo y Navbar -->
+    <header>
+        <div class="logo">MiLogo</div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <nav id="navbar">
+            <a href="#nombre">Inicio</a>
+            <a href="#descripcion">Descripción</a>
+            <a href="#features">Características</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+    <div class="a">Here header of zcoder</div>
+
+    <!-- Nombre -->
+    <section id="nombre">
+        <h1>ZCoder</h1>
+        <p>
+            The future is here. After looking at the Dyon System's project I started
+            implementing that idea of a smart editor without lsp or AI. A hard
+            engineering problem that the only thing it needs is time.
+        </p>
+    </section>
+
+    <!-- Características -->
+    <section id="features" class="features">
+        <h2>Features</h2>
+        <ul>
+            <li>Fácil de usar</li>
+            <li>Responsive</li>
+            <li>Alto rendimiento</li>
+            <li>Soporte técnico</li>
+        </ul>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <form id="contact-form">
+            <input type="text" name="nombre" placeholder="Tu nombre" required />
+            <input type="email" name="email" placeholder="Tu email" required />
+            <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+            <input type="submit" value="Enviar" />
+        </form>
+        <p id="form-msg"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 Lucas Hernandez Abreu. All rights reserved.</footer>
+
+    <!-- JS -->
+    <script src="scripts.js" />
+</body>
+
+</html>
