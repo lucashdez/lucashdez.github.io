@@ -22,10 +22,12 @@ jobs:
         run: cd dist/ansi_table && npm install
 
       - name: Build Angular app
-        run: cd dist/ansi_table && npm run build -- --output-path "dist/ansi_table" --base-href "."
+        run: | 
+          cd dist/ansi_table && npm run build -- --output-path "../../dist/ansi_table_static" --base-href "."
+          cd dist/ansi_table && npx ng run ansi_table:prerender
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./../../dist/ansi_table/static/browser
