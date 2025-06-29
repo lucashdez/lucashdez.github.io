@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "src/main.ts",
+            //"browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -82,6 +82,17 @@
             "styles": [
               "src/styles.css"
             ]
+          }
+        },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "browserTarget": "ansi_table:build:production",
+            "serverTarget": "ansi_table:server:production",
+            "routesFile": "src/app/app.routes.server.ts"
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
