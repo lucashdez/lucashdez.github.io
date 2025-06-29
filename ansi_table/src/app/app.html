@@ -1,0 +1,12 @@
+<main>
+  <div class="header-container">
+    <h1>ANSI-TABLE</h1>
+    <button class="slider-toggle" [class.active]="isDark" (click)="toggleTheme(!isDark)">
+      <span class="slider"></span>
+    </button>
+  </div>
+  <div class="ansi-table-ordered-container">
+    <ansi-table-ordered />
+  </div>
+</main>
+<router-outlet />
